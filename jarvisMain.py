@@ -59,7 +59,7 @@ def takeCommand():
     return query
 
 def alarm(query):
-    timewhere = open("Alarmtxt.txt","w")
+    timewhere = open("Alarmtxt.txt","a")
     timewhere.write(query)
     timewhere.close()
     os.startfile("alarm.py")
@@ -76,6 +76,13 @@ if __name__ == "__main__":
                 if "go to sleep" in query:
                     speak("Ok sir, You can call anytime")
                     break
+
+                elif "translate" in query:
+                    from Translator import translategl
+
+                    query = query.replace("jarvis", "")
+                    query = query.replace("translate", "")
+                    translategl(query)
                 elif "change password" in query:
                     speak("What's the new password")
                     new_pw = input("Enter the new password\n")
@@ -84,6 +91,16 @@ if __name__ == "__main__":
                     new_password.close()
                     speak("Done sir")
                     speak(f"Your new password is {new_pw}")
+                elif "focus mode" in query:
+                    a = int(input("Are you sure that you want to enter focus mode:-[1 for Yes/ 2 for No]"))
+                    if (a == 1):
+                        speak("Entering the focus Mode.....")
+                        os.startfile("C:\\Users\\anujs\\PycharmProjects\\voiceassist\\restriction.py")
+
+                        exit()
+
+
+
 
                 elif "schedule my day" in query:
                     tasks = []
@@ -173,6 +190,10 @@ if __name__ == "__main__":
                     pyautogui.press("i")
                 elif "undo minimize" in query:
                     pyautogui.press("i")
+                elif "show my focus" in query:
+                    from focus import focus_graph
+                    focus_graph()
+
 
 
                 elif "volume up" in query:
