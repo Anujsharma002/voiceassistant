@@ -1,0 +1,1 @@
+api_news = "d35ea4fb9d294213a3ecb931c991f768"
